@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Jaden</title>
+  <style>
+    :root {
+      --rose: #d95780;
+      --deep-rose: #8d2a52;
+      --pink: #ffd8e5;
+      --cream: #fff9f3;
+      --gold: #f6c271;
+      --leaf: #4d7c55;
+      --ink: #472637;
+      --shadow: 0 24px 72px rgba(108, 39, 69, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 14px 36px;
+      color: var(--ink);
+      font-family: Georgia, "Palatino Linotype", serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 226, 235, 0.95), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 214, 162, 0.56), transparent 30%),
+        linear-gradient(145deg, #fff9f5 0%, #ffe8ef 46%, #ffd4df 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(18px);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      top: -40px;
+      right: -60px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 204, 221, 0.24));
+    }
+
+    body::after {
+      left: -80px;
+      bottom: -20px;
+      background: radial-gradient(circle, rgba(255, 243, 214, 0.92), rgba(255, 187, 214, 0.22));
+    }
+
+    .scene {
+      position: relative;
+      width: min(1260px, 100%);
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .card {
+      position: relative;
+      padding: 28px;
+      border-radius: 34px;
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(255, 247, 242, 0.82)),
+        rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 26px;
+      border: 1px solid rgba(217, 87, 128, 0.14);
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -110px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 216, 229, 0.42), transparent 66%);
+      pointer-events: none;
+    }
+
+    .intro {
+      position: relative;
+      padding: 22px 22px 18px;
+      margin-bottom: 22px;
+      border-radius: 26px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(255, 238, 244, 0.95), rgba(255, 249, 236, 0.95));
+      border: 1px solid rgba(217, 87, 128, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--deep-rose);
+      border: 1px solid rgba(217, 87, 128, 0.16);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px auto 12px;
+      max-width: 12ch;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      color: #5f243c;
+      letter-spacing: -0.04em;
+    }
+
+    .message {
+      margin: 0 auto;
+      max-width: 64ch;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(71, 38, 55, 0.92);
+    }
+
+    .message strong {
+      color: var(--deep-rose);
+    }
+
+    .tagline {
+      margin: 14px 0 0;
+      font-family: "Segoe Script", "Lucida Handwriting", cursive;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      color: var(--deep-rose);
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-auto-rows: 92px;
+      gap: 12px;
+      grid-auto-flow: dense;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 3px solid rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 16px 30px rgba(95, 34, 60, 0.12);
+      transform: rotate(var(--tilt, 0deg));
+      transform-origin: center;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .photo:hover {
+      transform: rotate(var(--tilt, 0deg)) translateY(-3px);
+      box-shadow: 0 22px 40px rgba(95, 34, 60, 0.16);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(63, 24, 43, 0.16), transparent 42%);
+      pointer-events: none;
+    }
+
+    .tall {
+      grid-row: span 2;
+    }
+
+    .xtall {
+      grid-row: span 3;
+    }
+
+    .wide {
+      grid-column: span 2;
+    }
+
+    .large {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+
+    .panorama {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .flower {
+      position: absolute;
+      width: 122px;
+      height: 122px;
+      filter: drop-shadow(0 14px 18px rgba(116, 48, 74, 0.15));
+      pointer-events: none;
+      z-index: 2;
+      animation: sway 6s ease-in-out infinite;
+    }
+
+    .flower.small {
+      width: 92px;
+      height: 92px;
+      opacity: 0.92;
+    }
+
+    .flower .core {
+      position: absolute;
+      inset: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff3b8 0%, var(--gold) 58%, #d88f42 100%);
+      z-index: 2;
+    }
+
+    .flower.small .core {
+      inset: 31px;
+    }
+
+    .flower .petal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 30px;
+      height: 46px;
+      margin-left: -15px;
+      margin-top: -54px;
+      border-radius: 24px 24px 10px 10px;
+      background: linear-gradient(180deg, #fffafe 0%, #ffc4d4 44%, #df7696 100%);
+      transform-origin: 50% 54px;
+    }
+
+    .flower.small .petal {
+      width: 24px;
+      height: 38px;
+      margin-left: -12px;
+      margin-top: -44px;
+      transform-origin: 50% 44px;
+    }
+
+    .flower .stem {
+      position: absolute;
+      left: 57px;
+      top: 88px;
+      width: 8px;
+      height: 88px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #80b98d 0%, var(--leaf) 100%);
+      z-index: -1;
+    }
+
+    .flower.small .stem {
+      left: 43px;
+      top: 67px;
+      height: 68px;
+    }
+
+    .flower .leaf {
+      position: absolute;
+      width: 28px;
+      height: 18px;
+      border-radius: 20px 4px 20px 4px;
+      background: linear-gradient(135deg, #8fc99c 0%, #4e8359 100%);
+      z-index: -1;
+    }
+
+    .flower .leaf.left {
+      left: 35px;
+      top: 126px;
+      transform: rotate(-28deg);
+    }
+
+    .flower .leaf.right {
+      left: 57px;
+      top: 146px;
+      transform: rotate(36deg);
+    }
+
+    .flower.small .leaf {
+      width: 22px;
+      height: 14px;
+    }
+
+    .flower.small .leaf.left {
+      left: 27px;
+      top: 96px;
+    }
+
+    .flower.small .leaf.right {
+      left: 43px;
+      top: 113px;
+    }
+
+    .flower-a {
+      top: -40px;
+      left: -34px;
+      transform: rotate(-10deg);
+    }
+
+    .flower-b {
+      top: -46px;
+      right: -18px;
+      transform: scale(1.05) rotate(16deg);
+      animation-delay: -1.8s;
+    }
+
+    .flower-c {
+      top: 130px;
+      left: -42px;
+      transform: scale(0.78) rotate(12deg);
+      animation-delay: -3.1s;
+    }
+
+    .flower-d {
+      top: 170px;
+      right: -30px;
+      transform: scale(0.86) rotate(-14deg);
+      animation-delay: -2.2s;
+    }
+
+    .flower-e {
+      left: 36px;
+      bottom: -78px;
+      transform: scale(0.82) rotate(14deg);
+      animation-delay: -0.7s;
+    }
+
+    .flower-f {
+      right: 58px;
+      bottom: -86px;
+      transform: scale(0.98) rotate(-8deg);
+      animation-delay: -2.9s;
+    }
+
+    .flower-g {
+      top: 34px;
+      left: 220px;
+      transform: scale(0.7) rotate(-6deg);
+      animation-delay: -1.2s;
+    }
+
+    .flower-h {
+      right: 220px;
+      bottom: -48px;
+      transform: scale(0.68) rotate(10deg);
+      animation-delay: -3.6s;
+    }
+
+    .flower .petal:nth-child(1) { transform: rotate(0deg); }
+    .flower .petal:nth-child(2) { transform: rotate(45deg); }
+    .flower .petal:nth-child(3) { transform: rotate(90deg); }
+    .flower .petal:nth-child(4) { transform: rotate(135deg); }
+    .flower .petal:nth-child(5) { transform: rotate(180deg); }
+    .flower .petal:nth-child(6) { transform: rotate(225deg); }
+    .flower .petal:nth-child(7) { transform: rotate(270deg); }
+    .flower .petal:nth-child(8) { transform: rotate(315deg); }
+
+    @keyframes sway {
+      0%, 100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 0 -8px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .card {
+        padding: 22px;
+      }
+
+      .collage {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 96px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 16px 10px 26px;
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 26px;
+      }
+
+      .intro {
+        padding: 18px 14px 16px;
+        margin-bottom: 16px;
+      }
+
+      .collage {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 118px;
+        gap: 10px;
+      }
+
+      .wide,
+      .large,
+      .panorama {
+        grid-column: span 2;
+      }
+
+      .flower-c,
+      .flower-d,
+      .flower-g,
+      .flower-h {
+        display: none;
+      }
+
+      .flower {
+        width: 96px;
+        height: 96px;
+      }
+
+      .flower .core {
+        inset: 33px;
+      }
+
+      .flower .petal {
+        width: 24px;
+        height: 38px;
+        margin-left: -12px;
+        margin-top: -44px;
+        transform-origin: 50% 44px;
+      }
+
+      .flower .stem {
+        left: 44px;
+        top: 70px;
+        height: 72px;
+      }
+
+      .flower .leaf {
+        width: 22px;
+        height: 14px;
+      }
+
+      .flower .leaf.left {
+        left: 26px;
+        top: 99px;
+      }
+
+      .flower .leaf.right {
+        left: 43px;
+        top: 116px;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        min-height: auto;
+        padding: 0;
+        background: linear-gradient(145deg, #fff9f5 0%, #ffe8ef 46%, #ffd4df 100%);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body::before,
+      body::after {
+        display: none;
+      }
+
+      .scene {
+        width: auto;
+      }
+
+      .card {
+        padding: 14mm;
+        border-radius: 0;
+        border: 1px solid rgba(217, 87, 128, 0.2);
+        box-shadow: none;
+        backdrop-filter: none;
+        break-inside: avoid;
+      }
+
+      .card::after {
+        display: none;
+      }
+
+      .intro {
+        margin-bottom: 10mm;
+        break-inside: avoid;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: 28pt;
+      }
+
+      .message {
+        max-width: none;
+        font-size: 12pt;
+        line-height: 1.5;
+      }
+
+      .tagline {
+        font-size: 17pt;
+      }
+
+      .collage {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 42mm;
+        gap: 4mm;
+      }
+
+      .photo {
+        border-width: 2px;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      .photo:hover {
+        transform: rotate(var(--tilt, 0deg));
+        box-shadow: none;
+      }
+
+      .flower {
+        animation: none;
+      }
+
+      .flower-c,
+      .flower-d,
+      .flower-g,
+      .flower-h {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="flower flower-a" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower flower-b" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower small flower-c" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower small flower-d" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower flower-e" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower flower-f" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower small flower-g" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+    <div class="flower small flower-h" aria-hidden="true">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <span class="core"></span><span class="stem"></span><span class="leaf left"></span><span class="leaf right"></span>
+    </div>
+
+    <main class="card">
+      <header class="intro">
+        <div class="eyebrow">For Jaden</div>
+        <h1>Happy International Womens Day mein Liebling!</h1>
+        <p class="message">
+          I know I couldn&apos;t get you flowers today, so here is a collage of my favorite
+          <strong>fotos</strong> of you in the last month.
+        </p>
+        <p class="tagline">Keep being strong!</p>
+      </header>
+
+      <section class="collage" aria-label="A collage of photos of Jaden">
+        <figure class="photo large" style="--tilt:-2deg;">
+          <img src="IMG_20260214_172013.jpg" alt="Photo of Jaden smiling in a black hat">
+        </figure>
+        <figure class="photo wide" style="--tilt:1.8deg;">
+          <img src="IMG-20260115-WA0011.jpg" alt="Photo of Jaden with her partner under blue lighting">
+        </figure>
+        <figure class="photo xtall" style="--tilt:2deg;">
+          <img src="IMG_20260130_212244.jpg" alt="Photo of Jaden at a table">
+        </figure>
+        <figure class="photo tall" style="--tilt:-1.4deg;">
+          <img src="IMG-20260210-WA0002.jpg" alt="Mirror photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:1deg;">
+          <img src="IMG_20260110_000750_136.jpg" alt="Story photo of Jaden with her partner">
+        </figure>
+        <figure class="photo panorama" style="--tilt:-1.6deg;">
+          <img src="IMG_20251225_174129.jpg" alt="Wide photo of Jaden">
+        </figure>
+        <figure class="photo wide" style="--tilt:1.2deg;">
+          <img src="IMG_20251222_213818.jpg" alt="Landscape photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:-2.2deg;">
+          <img src="IMG_20251221_174838.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:1.5deg;">
+          <img src="IMG_20251218_191853.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:-0.8deg;">
+          <img src="IMG_20251207_191701.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo xtall" style="--tilt:1.6deg;">
+          <img src="Screenshot_2025-11-12-15-27-02-868_com.miui.home.jpg" alt="Screenshot image of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:-1.1deg;">
+          <img src="IMG_20251205_191326.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo wide" style="--tilt:1deg;">
+          <img src="IMG_20251124_202610.jpg" alt="Landscape photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:-1.8deg;">
+          <img src="IMG_20251123_152206.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:2deg;">
+          <img src="IMG_20251116_172522.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:-0.9deg;">
+          <img src="IMG_20251115_224656.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo tall" style="--tilt:1.4deg;">
+          <img src="IMG_20251114_195143.jpg" alt="Portrait photo of Jaden">
+        </figure>
+        <figure class="photo wide" style="--tilt:-1.3deg;">
+          <img src="IMG-20260109-WA0014.jpg" alt="Night photo of Jaden outside">
+        </figure>
+        <figure class="photo wide" style="--tilt:1.7deg;">
+          <img src="IMG-20251127-WA0013.jpg" alt="Close-up photo of Jaden in a coat">
+        </figure>
+        <figure class="photo wide" style="--tilt:-1deg;">
+          <img src="IMG-20251118-WA0001.jpg" alt="Indoor photo of Jaden">
+        </figure>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
